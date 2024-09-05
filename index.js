@@ -14,8 +14,12 @@ app.post("/", async (req, res) => {
   let province_input = req.body.province;
   amphure_input = req.body.amphure;
   tambon_input = req.body.tambon;
-  const data = await fs.readFile("./src/Thailanddata.json", "utf-8");
-  province = JSON.parse(data);
+  // const data = await fs.readFile("./src/Thailanddata.json", "utf-8");
+  // province = JSON.parse(data);
+  const data = await fetch(
+    "https://raw.githubusercontent.com/jirad-n/thailand-all-area-code/master/src/Thailanddata.json"
+  );
+  province = await data.json();
 
   const i = province.findIndex((e) => e.name_th === province_input);
   findProvince: if (i > -1) {
