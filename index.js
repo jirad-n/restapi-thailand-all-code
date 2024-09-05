@@ -6,7 +6,7 @@ const fs = require("fs/promises");
 const app = express();
 app.use(express.json());
 
-app.post("/code", async (req, res) => {
+app.post("/", async (req, res) => {
   let province_id,
     amphure_id,
     tambon_id,
